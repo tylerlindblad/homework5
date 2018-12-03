@@ -1,11 +1,12 @@
 <html>
 <head>
-<title>A very simple SPA</title>
+<title>SPA</title>
 </head>
 <body>
 
-<button onclick="fetch('students', ['name', 'advisor_id'])">Students</button>
-<button onclick="fetch('advisors', ['name'])">Advisors</button>
+<button onclick="fetch('courses', ['name', 'department', 'number', 'credit_hours'])">Courses</button>
+<button onclick="fetch('sections', ['course_id', 'semester', 'number', 'room_number', 'student_id'])">Sections</button>
+<button onclick="fetch('students', ['name', 'email', 'phone', 'advisor', 'course_id'])">Students</button>
 
 <div id="list">
 </div>
