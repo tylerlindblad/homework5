@@ -1,0 +1,52 @@
+<html>
+<head>
+<title>A very simple SPA</title>
+</head>
+<body>
+
+<button onclick="fetch('students', ['name', 'advisor_id'])">Students</button>
+<button onclick="fetch('advisors', ['name'])">Advisors</button>
+
+<div id="list">
+</div>
+
+<script>
+
+var l = document.getElementById("list");
+
+var Students = Backbone.Collection.extend({
+    url: '/students'
+})
+
+var clear = function() {
+    while (l.firstChild) {
+        l.removeChild(l.firstChild);
+    }
+};
+
+var http_request = new XMLHttpRequest();
+var fetch = function(which, fields) {
+    http_request.open("GET", "http://localhost:3000/" + which + ".json", true);
+    http_request.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (http_request.readyState === done && http_request.status === ok) {
+            clear();
+            let ol = document.createElement('ol');
+            l.appendChild(ol);
+
+            let jo = JSON.parse(http_request.responseText);
+            for (i in jo) {
+                let li = document.createElement('li');
+                for (f in fields) {
+                    li.textContent += jo[i][fields[f]] + ' ';
+                }
+                ol.appendChild(li);
+            }
+        }
+    }
+    http_request.send (null);
+};
+</script>
+
+</body>
+</html>
