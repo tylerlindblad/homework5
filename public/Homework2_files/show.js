@@ -1,0 +1,2 @@
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/sections/show"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<p>\n  <b>Course:</b>\n  ',  course ,'\n</p>\n\n<p>\n  <b>Semester:</b>\n  ',  semester ,'\n</p>\n\n<p>\n  <b>Number:</b>\n  ',  number ,'\n</p>\n\n<p>\n  <b>Room number:</b>\n  ',  room_number ,'\n</p>\n\n\n<a href="#/index">Back</a>\n');}return __p.join('');};
+}).call(this);

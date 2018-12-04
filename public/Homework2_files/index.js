@@ -1,0 +1,2 @@
+(function() { this.JST || (this.JST = {}); this.JST["backbone/templates/courses/index"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<h1>Listing courses</h1>\n\n<table id="courses-table">\n  <tr>\n    <th>Name</th>\n    <th>Department</th>\n    <th>Number</th>\n    <th>Credit hours</th>\n    <th></th>\n    <th></th>\n    <th></th>\n  </tr>\n</table>\n\n<br/>\n\n<a href="#/new">New Course</a>\n');}return __p.join('');};
+}).call(this);

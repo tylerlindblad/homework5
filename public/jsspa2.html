@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>SPA</title>
+</head>
+<body>
+
+<button onclick="fetchC('courses', ['name', 'department', 'number', 'credit_hours'])">Courses</button>
+<button onclick="fetchSec('sections', ['course_id', 'semester', 'number', 'room_number', 'student_id'])">Sections</button>
+<button onclick="fetchS('students', ['name', 'email', 'phone', 'advisor', 'course_id'])">Students</button>
+
+<div id="header">
+</div>
+
+<div id="list">
+</div>
+
+<script>
+
+var l = document.getElementById("list");
+
+var h = document.getElementById("header");
+
+let h1 = document.createElement('h1');
+
+var clear = function() {
+    while (l.firstChild) {
+        l.removeChild(l.firstChild);
+    }
+    while (h1.firstchild){
+        h1.removeChild(h1.firstChild);
+    }
+};
+
+
+var header = function(header1){
+    h.appendChild(h1);
+    h1.textContent = header1;
+}
+
+header('Sort of Banner');
+
+var http_request = new XMLHttpRequest();
+var fetchC = function(which, fields) {
+    header('Courses');
+    http_request.open("GET", "http://localhost:3000/" + which + ".json", true);
+    http_request.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (http_request.readyState === done && http_request.status === ok) {
+            clear();
+            let ol = document.createElement('ol');
+            l.appendChild(ol);
+
+            let jo = JSON.parse(http_request.responseText);
+            for (i in jo) {
+                let li = document.createElement('li');
+                for (f in fields) {
+                    li.textContent += jo[i][fields[f]] + ' ';
+                }
+                ol.appendChild(li);
+            }
+        }
+    }
+    http_request.send (null);
+};
+var fetchSec = function(which, fields) {
+   header('Sections');
+    http_request.open("GET", "http://localhost:3000/" + which + ".json", true);
+    http_request.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (http_request.readyState === done && http_request.status === ok) {
+            clear();
+            let ol = document.createElement('ol');
+            l.appendChild(ol);
+
+            let jo = JSON.parse(http_request.responseText);
+            for (i in jo) {
+                let li = document.createElement('li');
+                for (f in fields) {
+                    li.textContent += jo[i][fields[f]] + ' ';
+                }
+                ol.appendChild(li);
+            }
+        }
+    }
+    http_request.send (null);
+};
+var fetchS = function(which, fields) {
+   header('Students');
+    http_request.open("GET", "http://localhost:3000/" + which + ".json", true);
+    http_request.onreadystatechange = function () {
+        let done = 4, ok = 200;
+        if (http_request.readyState === done && http_request.status === ok) {
+            clear();
+            let ol = document.createElement('ol');
+            l.appendChild(ol);
+
+            let jo = JSON.parse(http_request.responseText);
+            for (i in jo) {
+                let li = document.createElement('li');
+                for (f in fields) {
+                    li.textContent += jo[i][fields[f]] + ' ';
+                }
+                ol.appendChild(li);
+            }
+        }
+    }
+    http_request.send (null);
+};
+</script>
+
+</body>
+</html>

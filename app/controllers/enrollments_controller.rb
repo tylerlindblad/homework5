@@ -13,17 +13,17 @@ class EnrollmentsController < ApplicationController
   end
 
   # GET /enrollments/new
-  def new
-    @enrollment = Enrollment.new
-    @students = Student.all
-    @sections = Section.all
-  end
+  # def new
+  #   @enrollment = Enrollment.new
+  #   @students = Student.all
+  #   @sections = Section.all
+  # end
 
   # GET /enrollments/1/edit
-  def edit
-    @students = Student.all
-    @sections = Section.all
-  end
+  # def edit
+  #   @students = Student.all
+  #   @sections = Section.all
+  # end
 
   # POST /enrollments
   # POST /enrollments.json
